@@ -21,6 +21,16 @@ function PatientPage() {
       <h2>{patient.name}, {patient.gender}</h2>
       <p>DoB: {patient.dateOfBirth}</p>
       <p>occupation: {patient.occupation}</p>
+      <h3>Entries</h3>
+        {patient.entries.map((entry)=> 
+        <div style={{borderStyle: "solid", padding:"1rem", margin:"1rem"}}key={entry.id}>
+          {entry.date}, <i>{entry.description}</i> 
+          <p>{entry.diagnosisCodes ? entry.diagnosisCodes.join(", "): ""}</p>
+        <p>Diagnosis by {entry.specialist}</p>
+        </div>
+        )}
+        
+            
     </article>;
 }
 

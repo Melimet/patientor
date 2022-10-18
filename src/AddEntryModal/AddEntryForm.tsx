@@ -1,21 +1,9 @@
-import { EntryFormValues, HealthCheckOption, TypeOption } from "../types";
+import { EntryFormValues } from "../types";
 import { Field, Formik, Form } from "formik";
-import { DiagnosisSelection, SelectField, TextField } from '../AddPatientModal/FormField';
-import { useStateValue } from "../state";
+import {  TextField } from '../AddPatientModal/FormField';
+
 import { Button, Grid } from "@material-ui/core";
 
-const healthCheckOptions: HealthCheckOption[] = [
-  { value: 0, label: 'Healthy' },
-  { value: 1, label: 'LowRisk' },
-  { value: 2, label: 'HighRisk' },
-  { value: 3, label: 'CriticalRisk' },
-];
-
-const typeOptions: TypeOption[] = [
-  { value: 'HealthCheck', label: 'Health check' },
-  { value: 'OccupationalHealthcare', label: 'Occupational healthcare' },
-  { value: 'Hospital', label: 'Hospital' },
-];
 
 interface Props {
   onSubmit: (values: EntryFormValues) => void;
@@ -24,9 +12,6 @@ interface Props {
 
 
 export function AddEntryForm({ onSubmit, onCancel }: Props){
-
-  const [{ diagnoses }] = useStateValue();
-
 
   return (
     <Formik
@@ -59,7 +44,7 @@ export function AddEntryForm({ onSubmit, onCancel }: Props){
       }}
   >
 
-      {({ isValid, dirty, setFieldValue, setFieldTouched }) => {
+      {({ isValid }) => {
         return (
           <Form className="form ui">
             <Field
